@@ -33,7 +33,7 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks, sticky, clickElement, renderCustomElement } = this.props
+    const { now, time, timebar, tracks, sticky, clickElement, renderCustomElement, renderCustomMarkerContent } = this.props
 
     const { pointerDate, pointerVisible, pointerHighlighted } = this.state
 
@@ -43,7 +43,13 @@ class Timeline extends Component {
       <div className="rt-timeline" style={{ width: time.timelineWidthStyle }}>
         {now && <NowMarker now={now} visible time={time} />}
         {pointerDate && (
-          <PointerMarker date={pointerDate} time={time} visible={pointerVisible} highlighted={pointerHighlighted} />
+          <PointerMarker
+            date={pointerDate}
+            time={time}
+            visible={pointerVisible}
+            highlighted={pointerHighlighted}
+            renderCustomMarkerContent={renderCustomMarkerContent}
+          />
         )}
         <Header
           time={time}
@@ -83,6 +89,7 @@ Timeline.propTypes = {
   sticky: PropTypes.shape({}),
   clickElement: PropTypes.func,
   renderCustomElement: PropTypes.func,
+  renderCustomMarkerContent: PropTypes.func,
 }
 
 export default Timeline

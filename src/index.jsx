@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
+import { getDayMonth } from './utils/formatDate'
 
 const UNKNOWN_WIDTH = -1
 
@@ -63,6 +64,7 @@ class Timeline extends Component {
       enableSticky = false,
       scrollToNow,
       renderCustomElement,
+      renderCustomMarkerContent,
     } = this.props
 
     const { time, timelineViewportWidth, sidebarWidth } = this.state
@@ -95,6 +97,7 @@ class Timeline extends Component {
           clickElement={clickElement}
           clickTrackButton={clickTrackButton}
           renderCustomElement={renderCustomElement}
+          renderCustomMarkerContent={renderCustomMarkerContent}
         />
       </div>
     )
@@ -123,6 +126,7 @@ Timeline.propTypes = {
   enableSticky: PropTypes.bool,
   scrollToNow: PropTypes.bool,
   renderCustomElement: PropTypes.func,
+  renderCustomMarkerContent: PropTypes.func,
 }
 
 export default Timeline

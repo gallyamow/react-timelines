@@ -142,6 +142,7 @@ class Layout extends PureComponent {
       clickElement,
       clickTrackButton,
       renderCustomElement,
+      renderCustomMarkerContent,
     } = this.props
 
     const { isSticky, headerHeight, scrollLeft } = this.state
@@ -173,6 +174,7 @@ class Layout extends PureComponent {
               }}
               clickElement={clickElement}
               renderCustomElement={renderCustomElement}
+              renderCustomMarkerContent={renderCustomMarkerContent}
             />
           </div>
         </div>
@@ -198,6 +200,7 @@ Layout.propTypes = {
   clickElement: PropTypes.func,
   clickTrackButton: PropTypes.func,
   renderCustomElement: PropTypes.func,
+  renderCustomMarkerContent: PropTypes.func,
 }
 
 export default Layout

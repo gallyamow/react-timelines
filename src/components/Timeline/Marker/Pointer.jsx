@@ -4,13 +4,16 @@ import PropTypes from 'prop-types'
 import { getDayMonth } from '../../../utils/formatDate'
 import Marker from '.'
 
-const PointerMarker = ({ time, date, visible, highlighted }) => (
+const PointerMarker = ({ time, date, visible, highlighted, renderCustomMarkerContent }) => (
   <Marker modifier="pointer" x={time.toX(date)} visible={visible} highlighted={highlighted}>
-    <div>
+    {renderCustomMarkerContent === undefined ?
       <div>
-        <strong>{getDayMonth(date)}</strong>
+        <div>
+          <strong>{getDayMonth(date)}</strong>
+        </div>
       </div>
-    </div>
+      : renderCustomMarkerContent(date)
+    }
   </Marker>
 )
 
@@ -21,6 +24,7 @@ PointerMarker.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   visible: PropTypes.bool,
   highlighted: PropTypes.bool,
+  renderCustomMarkerContent: PropTypes.func,
 }
 
 export default PointerMarker
