@@ -33,7 +33,7 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks, sticky, clickElement } = this.props
+    const { now, time, timebar, tracks, sticky, clickElement, renderCustomElement } = this.props
 
     const { pointerDate, pointerVisible, pointerHighlighted } = this.state
 
@@ -54,7 +54,13 @@ class Timeline extends Component {
           width={time.timelineWidthStyle}
           sticky={sticky}
         />
-        <Body time={time} grid={grid} tracks={tracks} clickElement={clickElement} />
+        <Body
+          time={time}
+          grid={grid}
+          tracks={tracks}
+          clickElement={clickElement}
+          renderCustomElement={renderCustomElement}
+        />
       </div>
     )
   }
@@ -76,6 +82,7 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   sticky: PropTypes.shape({}),
   clickElement: PropTypes.func,
+  renderCustomElement: PropTypes.func,
 }
 
 export default Timeline

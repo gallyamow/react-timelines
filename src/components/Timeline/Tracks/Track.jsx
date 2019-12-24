@@ -4,16 +4,18 @@ import PropTypes from 'prop-types'
 import Tracks from '.'
 import Element from './Element'
 
-const Track = ({ time, elements, isOpen, tracks, clickElement }) => (
+const Track = ({ time, elements, isOpen, tracks, clickElement, renderCustomElement }) => (
   <div className="tr-track">
     <div className="rt-track__elements">
       {elements
         .filter(({ start, end }) => end > start)
-        .map(element => (
-          <Element key={element.id} time={time} clickElement={clickElement} {...element} />
-        ))}
+        .map(element => {
+          return renderCustomElement === undefined
+            ? <Element key={element.id} time={time} clickElement={clickElement} {...element} />
+            : renderCustomElement({ element, time, clickElement })
+        })}
     </div>
-    {isOpen && tracks && tracks.length > 0 && <Tracks time={time} tracks={tracks} clickElement={clickElement} />}
+    {isOpen && tracks && tracks.length > 0 && <Tracks time={time} tracks={tracks} clickElement={clickElement}/>}
   </div>
 )
 
@@ -23,6 +25,7 @@ Track.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   clickElement: PropTypes.func,
+  renderCustomElement: PropTypes.func,
 }
 
 Track.defaultProps = {

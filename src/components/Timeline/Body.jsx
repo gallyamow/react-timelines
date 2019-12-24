@@ -4,10 +4,15 @@ import PropTypes from 'prop-types'
 import Tracks from './Tracks'
 import Grid from './Grid'
 
-const Body = ({ time, grid, tracks, clickElement }) => (
+const Body = ({ time, grid, tracks, clickElement, renderCustomElement }) => (
   <div className="rt-timeline__body">
     {grid && <Grid time={time} grid={grid} />}
-    <Tracks time={time} tracks={tracks} clickElement={clickElement} />
+    <Tracks
+      time={time}
+      tracks={tracks}
+      clickElement={clickElement}
+      renderCustomElement={renderCustomElement}
+    />
   </div>
 )
 
@@ -16,6 +21,7 @@ Body.propTypes = {
   grid: PropTypes.arrayOf(PropTypes.shape({})),
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   clickElement: PropTypes.func,
+  renderCustomElement: PropTypes.func,
 }
 
 export default Body
