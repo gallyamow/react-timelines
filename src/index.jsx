@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Controls from './components/Controls'
 import Layout from './components/Layout'
 import createTime from './utils/time'
-import { getDayMonth } from './utils/formatDate'
 
 const UNKNOWN_WIDTH = -1
 
