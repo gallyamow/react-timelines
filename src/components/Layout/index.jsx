@@ -141,8 +141,9 @@ class Layout extends PureComponent {
       timelineViewportWidth,
       clickElement,
       clickTrackButton,
-      renderCustomElement,
+      renderCustomElementContent,
       renderCustomMarkerContent,
+      renderCustomElementTooltipContent,
     } = this.props
 
     const { isSticky, headerHeight, scrollLeft } = this.state
@@ -173,8 +174,9 @@ class Layout extends PureComponent {
                 scrollLeft,
               }}
               clickElement={clickElement}
-              renderCustomElement={renderCustomElement}
-              renderCustomMarkerContent={renderCustomMarkerContent}
+              renderCustomElementContent={renderCustomElementContent}
+              renderCustomElementContent={renderCustomElementContent}
+              renderCustomElementTooltipContent={renderCustomElementTooltipContent}
             />
           </div>
         </div>
@@ -199,8 +201,9 @@ Layout.propTypes = {
   timelineViewportWidth: PropTypes.number,
   clickElement: PropTypes.func,
   clickTrackButton: PropTypes.func,
-  renderCustomElement: PropTypes.func,
+  renderCustomElementContent: PropTypes.func,
   renderCustomMarkerContent: PropTypes.func,
+  renderCustomElementTooltipContent: PropTypes.func,
 }
 
 export default Layout

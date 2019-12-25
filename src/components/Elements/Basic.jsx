@@ -11,25 +11,33 @@ const buildDataAttributes = (attributes = {}) => {
   return value
 }
 
-const Basic = ({ title, start, end, style, classes, dataSet, tooltip }) => (
+const Basic = ({ title, start, end, style, classes, dataSet, tooltip, renderCustomElementContent, renderCustomElementTooltipContent }) => (
   <div className={createClasses('rt-element', classes)} style={style} {...buildDataAttributes(dataSet)}>
     <div className="rt-element__content" aria-hidden="true">
-      <span className="rt-element__title">{title}</span>
+      {renderCustomElementContent === undefined
+        ? <span className="rt-element__title">{title}</span>
+        : renderCustomElementContent({ title, start, end })
+      }
     </div>
+
     <div className="rt-element__tooltip">
       {tooltip ? (
         // eslint-disable-next-line react/no-danger
-        <div dangerouslySetInnerHTML={{ __html: tooltip.split('\n').join('<br>') }} />
+        <div dangerouslySetInnerHTML={{ __html: tooltip.split('\n').join('<br>') }}/>
       ) : (
-        <div>
-          <div>{title}</div>
-          <div>
-            <strong>Start</strong> {getDayMonth(start)}
-          </div>
-          <div>
-            <strong>End</strong> {getDayMonth(end)}
-          </div>
-        </div>
+        renderCustomElementTooltipContent === undefined
+          ? (
+            <div>
+              <div>{title}</div>
+              <div>
+                <strong>Start</strong> {getDayMonth(start)}
+              </div>
+              <div>
+                <strong>End</strong> {getDayMonth(end)}
+              </div>
+            </div>
+          )
+          : renderCustomElementTooltipContent({ title, start, end })
       )}
     </div>
   </div>
@@ -43,6 +51,8 @@ Basic.propTypes = {
   classes: PropTypes.arrayOf(PropTypes.string.isRequired),
   dataSet: PropTypes.shape({}),
   tooltip: PropTypes.string,
+  renderCustomElementContent: PropTypes.func,
+  renderCustomElementTooltipContent: PropTypes.func,
 }
 
 export default Basic

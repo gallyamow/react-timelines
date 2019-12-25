@@ -12,7 +12,7 @@ const PointerMarker = ({ time, date, visible, highlighted, renderCustomMarkerCon
           <strong>{getDayMonth(date)}</strong>
         </div>
       </div>
-      : renderCustomMarkerContent(date)
+      : renderCustomMarkerContent({ date })
     }
   </Marker>
 )

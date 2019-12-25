@@ -33,7 +33,7 @@ class Timeline extends Component {
   }
 
   render() {
-    const { now, time, timebar, tracks, sticky, clickElement, renderCustomElement, renderCustomMarkerContent } = this.props
+    const { now, time, timebar, tracks, sticky, clickElement, renderCustomElementContent, renderCustomElementTooltipContent, renderCustomMarkerContent } = this.props
 
     const { pointerDate, pointerVisible, pointerHighlighted } = this.state
 
@@ -65,7 +65,8 @@ class Timeline extends Component {
           grid={grid}
           tracks={tracks}
           clickElement={clickElement}
-          renderCustomElement={renderCustomElement}
+          renderCustomElementContent={renderCustomElementContent}
+          renderCustomElementTooltipContent={renderCustomElementTooltipContent}
         />
       </div>
     )
@@ -88,7 +89,7 @@ Timeline.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({})),
   sticky: PropTypes.shape({}),
   clickElement: PropTypes.func,
-  renderCustomElement: PropTypes.func,
+  renderCustomElementContent: PropTypes.func,
   renderCustomMarkerContent: PropTypes.func,
 }
 

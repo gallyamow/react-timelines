@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import BasicElement from '../../Elements/Basic'
 
 const Element = props => {
-  const { time, style, title, start, end, classes, dataSet, tooltip, clickElement } = props
+  const { time, style, title, start, end, classes, dataSet, tooltip, clickElement, renderCustomElementContent, renderCustomElementTooltipContent } = props
 
   const handleClick = () => {
     clickElement(props)
@@ -25,6 +25,8 @@ const Element = props => {
         classes={classes}
         dataSet={dataSet}
         tooltip={tooltip}
+        renderCustomElementContent={renderCustomElementContent}
+        renderCustomElementTooltipContent={renderCustomElementTooltipContent}
       />
     </div>
   )
@@ -42,6 +44,7 @@ Element.propTypes = {
   end: PropTypes.instanceOf(Date).isRequired,
   tooltip: PropTypes.string,
   clickElement: PropTypes.func,
+  renderCustomElementContent: PropTypes.func,
 }
 
 Element.defaultTypes = {

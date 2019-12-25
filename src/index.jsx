@@ -62,8 +62,9 @@ class Timeline extends Component {
       toggleTrackOpen,
       enableSticky = false,
       scrollToNow,
-      renderCustomElement,
+      renderCustomElementContent,
       renderCustomMarkerContent,
+      renderCustomElementTooltipContent,
     } = this.props
 
     const { time, timelineViewportWidth, sidebarWidth } = this.state
@@ -95,8 +96,9 @@ class Timeline extends Component {
           sidebarWidth={sidebarWidth}
           clickElement={clickElement}
           clickTrackButton={clickTrackButton}
-          renderCustomElement={renderCustomElement}
+          renderCustomElementContent={renderCustomElementContent}
           renderCustomMarkerContent={renderCustomMarkerContent}
+          renderCustomElementTooltipContent={renderCustomElementTooltipContent}
         />
       </div>
     )
@@ -124,8 +126,9 @@ Timeline.propTypes = {
   toggleTrackOpen: PropTypes.func,
   enableSticky: PropTypes.bool,
   scrollToNow: PropTypes.bool,
-  renderCustomElement: PropTypes.func,
+  renderCustomElementContent: PropTypes.func,
   renderCustomMarkerContent: PropTypes.func,
+  renderCustomElementTooltipContent: PropTypes.func,
 }
 
 export default Timeline

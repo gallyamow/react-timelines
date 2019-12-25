@@ -54,4 +54,10 @@ npm install
 npm run watch
 ```
 
+```sh
+cd demo
+npm install
+npm run start
+```
+
 This library is developed using VSCode - opening it in VSCode will recommend extensions, and enable linting and auto-formatting of code.
